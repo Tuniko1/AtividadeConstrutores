@@ -1,13 +1,13 @@
 package entities;
 
-import java.util.Scanner;
+
 
 public class Livro {
 	
 	private String titulo;
 	private String edicao;
-	private int valor;
-	Scanner sc = new Scanner(System.in);
+	private double valor ;
+	
 	
 	public Livro (String titulo, String edicao, int valor){
 		this.titulo = titulo;
@@ -19,10 +19,8 @@ public class Livro {
 	}
 	
 	public void setTitulo(String titulo) {
-		if (titulo.isEmpty()) {
-			System.out.println("* É Obrigatório a inserção do título!\n");
-			setTitulo(titulo);
-		}
+		 
+		
 		this.titulo = titulo;
 	}
 	
@@ -31,30 +29,31 @@ public class Livro {
 	}
 	
 	public void setEdicao(String edicao) {
-		System.out.println("Insira a edição: " );
-		edicao = sc.nextLine();
-		if (edicao.isEmpty()) {
-			System.out.println("* É Obrigatório a inserção da edição!\n");
-			setEdicao(edicao);
-		}
+		
+		
 		this.edicao = edicao;
 	}
 	
-	public int getValor() {
+	public double getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
-    	System.out.println("Insira o valor: " );
-		valor = sc.nextInt();
-    	
+    public void setValor(double valor) {
+ 
 		if (valor > 100) {
+			double taxa = 30/100; 
     		valor += (valor * (30/100));
-    	}else if (valor < 0) {
-			System.out.println("* É Obrigatório a inserção do título!\n");
-			setValor(valor);
-    	}   	
+    		System.out.println("Foi aplicada uma taxa de "+taxa+" valor: R$"+valor);
+    	}	
     	this.valor = valor;
 
     }
+	public String toString() {
+		return "Titulo: "+getTitulo()
+				+"\nEdicao: "+getEdicao()
+				+"\nValor" +getValor();
+	}
+		
+		
+	
 }
